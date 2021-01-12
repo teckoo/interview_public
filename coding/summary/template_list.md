@@ -13,5 +13,5 @@
 * [Trie](./trie/template.md)
 * [Graph](./graph/template.md)
 * [Topological sort](./topological_sort/template.md)
-
+* [Intervals](./intervals/template.md)
 [](.//template.md)
