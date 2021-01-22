@@ -1,5 +1,7 @@
 # Two pointers
 
+[Explaination Details](./summary.md) | [Template Index](../template_list.md)
+
 ## Squeeze to middle direction
 
 ```python
