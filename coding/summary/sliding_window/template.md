@@ -8,7 +8,7 @@
 def sliding_window(s, t):
     """ s, t are iterable """
     need, window = {}, {}  # counters
-    [need.setdefault(c, 1) for c in t]
+    need = collections.Counter(t)
     # need = {A: 1, B: 1, C: 1}
     left = right = 0
     valid = 0
@@ -16,13 +16,15 @@ def sliding_window(s, t):
         c = s[right]
         right += 1  # move right window
         # ... update window
-
+        # e.g. window[c] += 1
+        
         print(f"left={left}, right={right}")
         # check left window
         while window needs shrink:
             d = s[left]
             left += 1
             # ... update window
+            # e.g. window[d] -= 1
 ```
 
 LC: 76, 567, 438, 3
