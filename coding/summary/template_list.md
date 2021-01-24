@@ -1,5 +1,6 @@
 # Templates
 
+* [Queue/Stack](./queue_stack/template.md)
 * [Heap](./heap/template.md)
 * [Tree](./tree/template.md)
 * [Trie](./trie/template.md)
