@@ -1,10 +1,11 @@
 # Coding triks
 
-## Initialize a 2-D array
+[Template Index](./template_list.md)
+## Initialize a 2-D (M * N) array
 
 ```python
-rows = len(grid)
-cols = len(grid[0])
+rows = len(grid)  # M
+cols = len(grid[0])  # N
 dp = [[-1 for _ in range(cols)] for _ in range(rows)]
 ```
 
@@ -12,9 +13,9 @@ dp = [[-1 for _ in range(cols)] for _ in range(rows)]
 
 Useful in checking matrix, board games.
 
-1. "hill" diagonals（正斜线 in math `y=-x+b`): in coding, `row + column = const`
+1. "dale" diagonals（正斜线 in math `y=-x+b`): in coding, `row + column = const`
 
-2. "dale" diagonals (反斜线 in math `y=x+b`): in coding, `row - column = const`
+2. "hill" diagonals (反斜线 in math `y=x+b`): in coding, `row - column = const`
 
 See: LC 52 N-Queens
 
