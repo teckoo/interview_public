@@ -18,7 +18,7 @@ def BFS(Node start, Node target):
     visited.add(start)
     step = 0  # 记录扩散的步数
 
-    while not q: 
+    while q: 
         sz = len(q)
         # 将当前队列中的所有节点向四周扩散
         for _ in range(sz):

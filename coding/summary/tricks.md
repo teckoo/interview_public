@@ -1,6 +1,23 @@
 # Coding triks
 
 [Template Index](./template_list.md)
+
+## Convertion
+
+```python
+# string <--> int: 
+ord('a') = 97, chr(97) = 'a'
+
+'0'.isdecimal() == True
+
+# enumeration:
+for i in range(2**n, 2**(n+1)):
+  bitmask = bin(i)[3:] # skip '0b1'
+  for j in range(n):
+    if bitmask[j] == '1':
+      # do some actions
+```
+
 ## Initialize a 2-D (M * N) array
 
 ```python

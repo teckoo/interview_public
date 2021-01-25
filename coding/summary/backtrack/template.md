@@ -6,7 +6,7 @@
 result = []
 def backtrack(path, candidate_list):
     if meet_condition:
-        result.add(path)
+        result.add(list(path))
         return
 
     for choice in candidate_list:
@@ -18,3 +18,7 @@ def backtrack(path, candidate_list):
         remove choice from path
         add choice back to candidate_list
 ```
+
+LC:
+* [797. All Paths From Source to Target](../../leetcode/797-all-paths-from-source-to-target/solution-backtrack.py)
+* [8 queens]()

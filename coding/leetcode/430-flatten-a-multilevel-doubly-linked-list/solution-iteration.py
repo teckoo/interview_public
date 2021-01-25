@@ -22,10 +22,10 @@ class Solution(object):
             prev.next = cur
             cur.prev = prev
 
-            if cur.next:
+            if cur.next:  # must push next first
                 stack.append(cur.next)
 
-            if cur.child:
+            if cur.child: # push child later
                 stack.append(cur.child)
                 cur.child = None
 
