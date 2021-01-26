@@ -34,4 +34,7 @@ class Heap:
     def is_empty(self):
         return not bool(self.minheap)
 
+    def pushpop(self, k):
+        return heappushpop(k)
+
 ```

@@ -16,6 +16,10 @@ for i in range(2**n, 2**(n+1)):
   for j in range(n):
     if bitmask[j] == '1':
       # do some actions
+
+# K largest in heap
+count = Counter(nums)
+return heapq.nlargest(k, count.keys(), key=count.get)
 ```
 
 ## Initialize a 2-D (M * N) array
