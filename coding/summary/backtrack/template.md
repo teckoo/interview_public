@@ -61,12 +61,12 @@ def backtrack(grid, row):
         # restore choice
         grid[row][col] = '.'
 
-# For games such as Sokudo, find one solution is good enough to return, 
+# or games such as Sokudo, find one solution is good enough to return, 
 
     if meet_condition:
         make_solution()
         return True
-    ...
+    
         if backtrack(grid, row + 1):
             return True
     ...
