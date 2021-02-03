@@ -41,4 +41,5 @@ Constraints:
     1 <= coins[i] <= 231 - 1
     0 <= amount <= 104
 
-
+- [DP top-down](./solution-topdown.py): DP template, Time O(N*k), Space(N)
+- [DP bottom-up](./solution-bottomup.py): DP template, time O(N*k), Space(N)

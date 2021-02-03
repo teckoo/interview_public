@@ -1,9 +1,15 @@
 class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
-        dp = [float('inf')] * (amount + 1)
+        # plus base, make array as `size + 1`
+        dp = [float("inf")] * (amount + 1)
+        # base case
         dp[0] = 0
-        
-        for coin in coins:
-            for x in range(coin, amount + 1):
-                dp[x] = min(dp[x], dp[x - coin] + 1)
-        return dp[amount] if dp[amount] != float('inf') else -1 
+        # iterate all states
+        for i in range(len(dp)):
+            # go over each choice
+            for coin in coins:
+                # skip invalid sub problem
+                if (i - coin) < 0: continue
+                # check optimal sub-problem   
+                dp[i] = min(dp[i], dp[i - coin] + 1)
+        return dp[amount] if dp[amount] != float("inf") else -1
