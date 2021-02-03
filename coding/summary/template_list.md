@@ -3,7 +3,7 @@
 
 |     |     |     |
 | --- | --- | --- |
-| [Tricks](./tricks.md) | [Bitwise](./bitwise/template.md) | [Math](./math/template.md) |
+| [Tricks][] | [Bitwise][] | [Math][] |
 | Data Structure |
 | [Array](./array_string/template.md) | [Queue/Stack](./queue_stack/template.md) | [Heap](./heap/template.md) |
 | [Linked List](./linked_list/template.md) | [Tree](./tree/template.md) | [Trie](./trie/template.md) |
@@ -16,3 +16,7 @@
 | [Intervals](./intervals/template.md) | [Union Find](./union_find/template.md) | 
 | [Dynamic Programming](./dynamic_prog/template.md) |
 [](.//template.md)
+
+[Tricks]: ./tricks.md
+[Bitwise]: ./bitwise/template.md
+[Math]: ./math/template.md
