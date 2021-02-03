@@ -1,5 +1,7 @@
 # Reverse Linked list
 
+[Explaination Details](./summary.md) | [Template Index](../template_list.md)
+
 ## Iteration version
 
 ```python
