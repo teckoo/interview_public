@@ -72,4 +72,4 @@ def merge(list1, list2):
     return new_list
 ```
 
-[42. Trapping rain water](./leetcode/42-trapping-rain-water/solution_two_ptr.py)
+[42. Trapping rain water](../../leetcode/42-trapping-rain-water/solution_two_ptr.py)
