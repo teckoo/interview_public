@@ -32,4 +32,66 @@ def BFS(Node start, Node target):
                     q.append(x)
                     visited.add(x)
         step += 1  # 划重点：更新步数在这里
+
+# 797.  All Paths From Source to Target
+    def allPathsSourceTarget(self, graph: List[List[int]]) -> List[List[int]]:
+        if not graph or not graph[0]: return []
+        q = collections.deque()
+        # visited = set()  # since all paths, no need to check visited.
+        target = len(graph) - 1
+        q.append((0, []))
+        res = []
+        while q:            
+            for i in range(len(q)):
+                cur, path = q.popleft()  # store node and state
+                if cur == target:
+                    res.append(path + [cur])
+                for c in graph[cur]:
+                    # create a new list obj, not path.append()
+                    q.append((c, path + [cur]))
+        return res
+
+# Two-way BFS
+def openLock(deadends, target):
+    """ deadends: str[], target: str """
+    deads = set(deadends)
+    # 用集合不用队列，可以快速判断元素是否存在
+    q1, q2, visited = set(), set(), set()
+
+    step = 0
+    q1.add("0000")
+    q2.add(target)
+
+    while q1 and q2:
+        # 哈希集合在遍历的过程中不能修改，用 temp 存储扩散结果
+        temp = set()
+
+        if len(q1) > len(q2):  # trick: balance 2 sets
+            q1, q2 = q2, q1
+
+        # 将 q1 中的所有节点向周围扩散 
+        for cur in q1:
+            # 判断是否到达终点 
+            if (deads.contains(cur))
+                continue;
+            if (q2.contains(cur))
+                return step;
+            visited.add(cur);
+
+            # 将一个节点的未遍历相邻节点加入集合 
+            for j in range(4):
+                up = plusOne(cur, j)
+                if up not in visited:
+                    temp.add(up)
+                down = minusOne(cur, j)
+                if down not in visited:
+                    temp.add(down)
+        # 在这里增加步数 
+        step += 1
+        # temp 相当于 q1
+        # 这里交换 q1 q2，下一轮 while 就是扩散 q2
+        q1 = q2
+        q2 = temp
+    }
+    return -1
 ```
