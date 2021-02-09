@@ -48,7 +48,7 @@ for i in range(n):
         process this [i, j]
 ```
 
-## Merge two points
+## Merge two lists
 
 ```python
 def merge(list1, list2):
@@ -72,4 +72,24 @@ def merge(list1, list2):
     return new_list
 ```
 
-[42. Trapping rain water](../../leetcode/42-trapping-rain-water/solution_two_ptr.py)
+[42. Trapping Rain Water]
+
+```python
+def trap(height):  # height: int[]
+    if not height: return 0
+    left, right = 0, len(height) - 1
+    res = 0
+    l_max, r_max = height[0], height[right]
+    
+    while left <= right:
+        l_max = max(l_max, height[left])
+        r_max = max(r_max, height[right])
+        
+        if l_max < r_max:
+            res += l_max - height[left]
+            left += 1 
+        else: 
+            res += r_max - height[right]
+            right -= 1
+    return res
+```

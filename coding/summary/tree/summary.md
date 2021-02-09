@@ -1,5 +1,22 @@
 # Tree
 
+- [Tree](#tree)
+  - [Traverse Templates](#traverse-templates)
+    - [Recursion traverse](#recursion-traverse)
+    - [Iteration traverse](#iteration-traverse)
+      - [BFS](#bfs)
+      - [DFS](#dfs)
+    - [Inorder traverse](#inorder-traverse)
+    - [Morris Inorder Traversal](#morris-inorder-traversal)
+  - [Search Templates](#search-templates)
+    - [Recursion version](#recursion-version)
+    - [Iteration version](#iteration-version)
+  - [Insertion Templates](#insertion-templates)
+    - [Recursion insertion](#recursion-insertion)
+    - [Iteration insertion](#iteration-insertion)
+  - [Deletion Templates](#deletion-templates)
+  - [What is a Height-Balanced BST](#what-is-a-height-balanced-bst)
+
 ## Traverse Templates
 
 ### Recursion traverse

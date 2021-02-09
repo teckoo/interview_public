@@ -2,70 +2,48 @@
 
 [Explaination Details](./summary.md) | [Template Index](../template_list.md)
 
+- [Template](#template)
+  - [Traverse Templates](#traverse-templates)
+    - [Recurfsion traverse](#recurfsion-traverse)
+    - [Iteration traverse](#iteration-traverse)
+      - [BFS](#bfs)
+      - [DFS](#dfs)
+  - [BST Search Templates](#bst-search-templates)
+    - [Recursion version](#recursion-version)
+    - [Iteration version](#iteration-version)
+  - [BST Insertion Templates](#bst-insertion-templates)
+    - [Recursion insertion](#recursion-insertion)
+    - [Iteration insertion](#iteration-insertion)
+  - [Deletion Templates](#deletion-templates)
+
 ## Traverse Templates
 
-### Recursion traverse
+Search in a tree is traverse in pre/in/post order.
 
-Generic format:
+### Recurfsion traverse
 
 ```python
-nodes_sorted = []
-def _inorder(root):
+def traverse(root):
     if not root: return
-    _inorder(root.left)
-    nodes_sorted.append(root.val)
-    _inorder(root.right)
-```
+    # preorder actions
+    traverse(root.left)
+    # inorder actions
+    traverse(root.val)
+    # postorder actions
 
-Another simple version:
-
-```python
+# For example, in-order traverse to a list
 def inorder(root):
     return inorder(root.left) + [root.val] + inorder(root.right) if root else []
 ```
 
-Find succesor: one step right, and then left till you can
-
-```python
-def successor(root):
-    root = root.right
-    while root.left:
-        root = root.left
-    return root
-```
-
-Find predecessor: one step left, and then right till you can.
-
-```python
-def predecessor(root):
-    root = root.left
-    while root.right:
-        root = root.right
-    return root
-```
-
-Example for BST validation.
-
-```python
-def isValidBST(self, root: TreeNode) -> bool:
-    def is_valid(root, lower, upper):
-        if root is None: return True
-        if root.val <= lower or root.val >= upper:
-            return False
-
-        return is_valid(root.left, lower, root.val) \
-                and is_valid(root.right, root.val, upper)
-
-    if root is None: return True
-
-    return is_valid(root, float("-inf"), float("inf"))
-```
+LC:
+[100. same tree](../../leetcode/100-same-tree/solution-recursion.py)
 
 ### Iteration traverse
 
-The time complexity is O(N), and the space complexity is O(N).
-
 #### BFS
+
+BFS time complexity is O(N), and the space complexity is O(N).
 
 ```python
 def traverse(root):
@@ -80,6 +58,8 @@ def traverse(root):
 ```
 
 #### DFS
+
+DFS has better space complexity O(LogN).
 
 ```python
 def isValidBST(self, root: TreeNode) -> bool:
@@ -98,48 +78,37 @@ def isValidBST(self, root: TreeNode) -> bool:
     return True
 ```
 
-### Inorder traverse
+* Traverse: LC 98, 285, 510
 
-For BFS, use queue; while for DFS, use stack.
+## BST Search Templates
 
-![Tree Traversal order](tree_traverse.png)
+BST should compare the value, and decide to go down to one of the branches if possible. 
+
+Example for BST validation.
 
 ```python
 def isValidBST(self, root: TreeNode) -> bool:
-    stack, inorder = [], float("-inf")
+    def is_valid(root, lower, upper):
+        if not root: return True
+        if root.val <= lower or root.val >= upper:
+            return False
 
-    while stack or root:
-        while root:
-            stack.append(root)
-            root = root.left
-        root = stack.pop()
-        # only next line is not in generic
-        if root.val <= inorder: return False
+        return is_valid(root.left, lower, root.val) \
+                and is_valid(root.right, root.val, upper)
 
-        inorder = root.val
-        root = root.right
-    return True
+    return is_valid(root, float("-inf"), float("inf"))
 ```
-
-### Morris Inorder Traversal
-
-Morris inorder traversal is simple: to use no space but to traverse the tree.
-The idea of Morris algorithm is to set the temporary link between the node and its predecessor: `predecessor.right = root`. So one starts from the node, computes its predecessor and verifies if the link is present.
-
-[Leetcode: inorder traversal](https://leetcode.com/articles/recover-binary-search-tree/)
-
-* Traverse: LC 98, 285, 510
-
-## Search Templates
 
 ### Recursion version
 
 ```python
 def searchBST(self, root: TreeNode, val: int) -> TreeNode:
     if not root: return None
-    if root.val == val: return root
-    elif val < root.val: return self.searchBST(root.left, val)
-    return self.searchBST(root.right, val)
+    if val == root.val: return root
+    elif val < root.val: 
+        return self.searchBST(root.left, val)
+    else:  # val > root.val
+        return self.searchBST(root.right, val)
 ```
 
 ### Iteration version
@@ -155,11 +124,12 @@ def searchBST(self, root: TreeNode, val: int) -> TreeNode:
     return root
 ```
 
-LC Problems
+LC:
+[700. search in BST](../../leetcode/700-search-in-a-binary-search-tree/solution-iteration.py)
 
-* Search: LC 700
+## BST Insertion Templates
 
-## Insertion Templates
+If we need to change the value/structure of a tree, we must return the node pointer and assign the return value to a variable. 
 
 ### Recursion insertion
 
@@ -200,19 +170,29 @@ class Solution:
         return TreeNode(val)
 ```
 
+[701. insertion in BST](../../leetcode/701-insert-into-a-binary-search-tree/description.md)
+
 ## Deletion Templates
 
 * <https://leetcode.com/explore/learn/card/introduction-to-data-structure-binary-search-tree/141/basic-operations-in-a-bst/1025/>
 * <https://leetcode.com/problems/delete-node-in-a-bst/solution/>
 
-```python
+Find succesor: one step right, and then left till you can
 
+```python
+def successor(root):
+    root = root.right
+    while root.left:
+        root = root.left
+    return root
 ```
 
-## What is a Height-Balanced BST
+Find predecessor: one step left, and then right till you can.
 
-Terminology used in trees:
-
-* Depth of node - the number of edges from the tree's root node to the node
-* Height of node - the number of edges on the longest path between that node and a leaf
-* Height of Tree - the height of its root node
+```python
+def predecessor(root):
+    root = root.left
+    while root.right:
+        root = root.right
+    return root
+```
